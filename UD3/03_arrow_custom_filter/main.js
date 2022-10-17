@@ -1,7 +1,25 @@
 const assert = require('assert').strict;
 
-function select(array, condition) {
+
+function select(array, conditionCallback) {
+    let result = []
+
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+
+        if (conditionCallback(element)) {
+            result.push(element)
+        }
+    }
+
+    return result
 }
+
+let pairs = (element) => element % 2 ==0
+
+let gt15 = (element) => element>15
+
+let lt10 = (element) => element < 10
 
 let values = [1, 2, 3, 5, 7, 13, 17, 23, 29]
 
