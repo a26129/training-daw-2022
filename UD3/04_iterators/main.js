@@ -38,17 +38,13 @@ function iterateForEach() {
   pilots.forEach(element => console.log(element))
 }
 function mapIds() {
-  let ids = [];
-  for(let i = 0;i<pilots.length;i++){
-    ids.push(pilots[i].id)
-  }
-  return ids
+  return pilots.map(x => x.id)
 }
 function rebels() {
-  return pilots.filter( reb => reb.faction =='Rebels')
+  return pilots.filter( reb => reb.faction === 'Rebels')
 }
 function totalFaction(faction) {
-  return (pilots.filter( reb => reb.faction == faction)).length
+  return (pilots.filter( reb => reb.faction === faction)).length
 }
 function avgYears(faction) {
   let sumaEdad = 0
@@ -58,6 +54,9 @@ function avgYears(faction) {
     }
   }
   return sumaEdad/pilots.length
+  /*Otra forma mejor
+  return pilots .filter(x => x.faction === faction).reduce((a, b) => a + b.years, 0) / pilots.filter(x => x.faction === faction).length
+  */
 }
 
 // use console.log
