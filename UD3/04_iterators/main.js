@@ -30,20 +30,39 @@ var pilots = [
 ];
 
 function iterateSimple() {
+  for(let i = 0;i<pilots.length;i++){
+    console.log(pilots[i])
+  }
 }
 function iterateForEach() {
+  pilots.forEach(element => console.log(element))
 }
 function mapIds() {
+  let ids = [];
+  for(let i = 0;i<pilots.length;i++){
+    ids.push(pilots[i].id)
+  }
+  return ids
 }
 function rebels() {
+  return pilots.filter( reb => reb.faction =='Rebels')
 }
 function totalFaction(faction) {
+  return (pilots.filter( reb => reb.faction == faction)).length
 }
 function avgYears(faction) {
+  let sumaEdad = 0
+  for(let i = 0;i<pilots.length;i++){
+    if(pilots[i].faction=faction){
+      sumaEdad +=pilots[i].years;
+    }
+  }
+  return sumaEdad/pilots.length
 }
 
 // use console.log
 iterateSimple()
+console.log(" ")
 iterateForEach()
 try {
   assert.deepStrictEqual(mapIds(), [2,8,40,66])
